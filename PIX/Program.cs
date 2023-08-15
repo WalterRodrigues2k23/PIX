@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using PIX.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<MVCPixDbContext>(options => 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MVCPixConnectionString")));
 
 var app = builder.Build();
 
